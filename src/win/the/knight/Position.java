@@ -45,6 +45,7 @@ public class Position {
 	/**
 	 * Checks if the coordinates of x and y are equal with the
 	 * winning coordinates of the game
+	 * @return true or false
 	 */
 	public Boolean isWinningPosition() {
 		return (this.x == X_WIN && this.y == Y_WIN);
