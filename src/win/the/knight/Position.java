@@ -26,12 +26,13 @@ public class Position {
 	 * @param Returns void
 	 */
 	// Generates a random position of the knight at the start of the game
-	private void generateStartingPosition() {
+	protected void generateStartingPosition() {
 		String[] coordinates = LEGAL_STARTING_POSITIONS[ThreadLocalRandom.current().nextInt(0,
 				(LEGAL_STARTING_POSITIONS.length))].split(" ");
 		this.x = Integer.parseInt(coordinates[0]);
 		this.y = Integer.parseInt(coordinates[1]);
 	}
+	
 	/**
 	 * Checks if the user has made a position
 	 * between the game rules
