@@ -1,68 +1,60 @@
 package win.the.knight;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Scanner;
 
 public class KnightChessLogic {
-	final static int MIN_COORDINATE_VALUE = 1;
-	final static int MAX_COORDINATE_VALUE = 3;
-	private static String WIN_MESSAGE = "Congratulations, you have reached the final position";
- 
-	private int [] x = {1, 2, 2, 1, -1, -2, -2, -1};
-	private int [] y = {2, 1, -1, -2, -2, -1, 1, 2};
+	private final static String WIN_MESSAGE = "Congratulations, you have reached the final position";
+	/**
+	 * TODO
+	 */
 	private Position position;
+	Scanner sc;
 	
 	public KnightChessLogic() {
-		
+		sc = new Scanner(System.in);
 	}
 	
 	/**
 	 * Starting the main functions of the game
+	 * @throws PositionException 
 	 */
-	protected void startChess() {
-		position = new Position();
+	protected void startChess(int x, int y) throws PositionException {
+		position = new Position(x, y);
 		Board.getInstance().drawBoard(position);
-		moveKnight();
+		while (!moveKnight()) {
+			
+		}
 	}
 
 	/**
 	 * 
 	 * Converts the user String with position to Integers x & y
+	 * {@link #position}
 	 * @param Coordinates X & Y
 	 */
-	public void moveKnight() {
+	private boolean moveKnight() {
 		if(position.isWinningPosition()) {
 			System.out.println(WIN_MESSAGE);
-			return ;
+			sc.close();
+			return true;
 		}
-		System.out.println("Enter Knight coordinates");
-		try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
-			String[] userInputCoordinates = br.readLine().split(" ");
-			
-			//position.isLegalPosition(int x, int y)
-			position.x = Integer.parseInt(userInputCoordinates[0]);
-			position.y = Integer.parseInt(userInputCoordinates[1]);
-			Board.getInstance().drawBoard(position);
-			moveKnight();
-		} catch (IOException e) {
-			System.out.println("An error has occured");
-			e.printStackTrace();
-		} catch (NumberFormatException e) {
-			System.out.println("Only Integers are accepted");
-			e.printStackTrace();
+		System.out.println("Enter Knight coordinates: ");
+		try {
+			String[] userInputCoordinates = sc.nextLine().split(" ");
+			int x = Integer.parseInt(userInputCoordinates[0]);
+			int y = Integer.parseInt(userInputCoordinates[1]);
+			if(position.isLegalPosition(x, y)) {
+				position.x = x;
+				position.y = y;
+			} else {
+				System.out.println("Position x,y is not legal");
+			}
+		} catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+			System.out.println("Only Integers accepted, number of Integer = 2 -" + e.getMessage());
 		} finally {
-			
+			Board.getInstance().drawBoard(position);
 		}
-	}
-/**
- * 
- * 
- */
-	public static void main(String[] args) {
-		KnightChessLogic chessGame = new KnightChessLogic();
-		chessGame.startChess();
+		return false;
 	}
 
 }

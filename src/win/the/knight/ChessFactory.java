@@ -9,11 +9,4 @@ public class ChessFactory {
 	public KnightChessLogic constructChess() {
 		return new KnightChessLogic();
 	}
-	
-	public Position constructPos() {
-		Position pos = new Position();
-		pos.generateStartingPosition();
-		
-		return pos;
-	}
 }
