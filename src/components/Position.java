@@ -4,6 +4,12 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import exceptions.PositionException;
 
+/**
+ * 
+ * @author Kaloyan Tsenov
+ * @see Position.{@link #x}
+ * @see Position.{@link #y}
+ */
 public class Position {
 	private final static int WIN_POSITION = 3;
 	private final static int MIN_POSITION = 1;
@@ -11,12 +17,12 @@ public class Position {
 	private final static String[] LEGAL_STARTING_POSITIONS = { "1 1", "1 2", "1 3", "2 1", "2 3", "3 1", "3 2" };
 	
 	/**
-	 * Chess board column
+	 * Chess piece column
 	 */
 	public int x;
 	
 	/**
-	 * Chess board row
+	 * Chess piece row
 	 */
 	public int y;
 	

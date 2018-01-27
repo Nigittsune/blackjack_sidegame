@@ -2,6 +2,11 @@ package knight_for_the_win;
 
 import exceptions.PositionException;
 
+/**
+ * 
+ * @author Kaloyan Tsenov
+ *
+ */
 public class Main {
 
 	public static void main(String[] args) {

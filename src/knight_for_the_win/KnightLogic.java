@@ -12,13 +12,15 @@ import exceptions.PositionException;
  *
  */
 public class KnightLogic {
-	private final static String WIN_MESSAGE = "Congratulations, you have reached the final position";
-	/**
-	 * TODO
-	 */
-	private Position position;
-	Scanner sc;
+	private final static String WIN_MESSAGE = "Congratulations, you have reached the final position!";
+	private final static String ENTER_POSITION_MESSAGE = "Enter Knight next position:";
 	
+	private Position position;
+	private Scanner sc;
+	
+	/**
+	 * @param sc - initializing a new Scanner Object
+	 */
 	public KnightLogic() {
 		sc = new Scanner(System.in);
 	}
@@ -36,9 +38,13 @@ public class KnightLogic {
 	}
 
 	/**
-	 * 
 	 * Converts the user String with position to Integers x and y
-	 * Checks if the new position is legal or is it a winning position
+	 * Checks if the new position is legal or is it a winning position.
+	 * Contains {@link #position}.
+	 * @param userCoord a String containing the int representation to be parsed
+	 * @param WIN_MESSAGE a String used only if user have reached the final point.
+	 * @param ENTER_POSITION_MESSAGE a String used as a hint for the 
+	 * player to enter new position.
 	 * @throws NumberFormatException
 	 * @throws ArrayIndexOutOfBoundsException
 	 */
@@ -50,11 +56,11 @@ public class KnightLogic {
 			return true;
 		}
 		
-		System.out.println("Enter Knight coordinates: ");
+		System.out.println(ENTER_POSITION_MESSAGE);
 		try {
-			String[] userInputCoordinates = sc.nextLine().split(" ");
-			int x = Integer.parseInt(userInputCoordinates[0]);
-			int y = Integer.parseInt(userInputCoordinates[1]);
+			String[] userCoord = sc.nextLine().split(" ");
+			int x = Integer.parseInt(userCoord[0]);
+			int y = Integer.parseInt(userCoord[1]);
 			if(position.isLegalPosition(x, y)) {
 				position.x = x;
 				position.y = y;

@@ -1,5 +1,10 @@
 package knight_for_the_win;
 
+/**
+ * 
+ * @author Kaloyan Tsenov
+ *
+ */
 public class KnightFactory {
 	
 	/**

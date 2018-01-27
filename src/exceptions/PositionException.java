@@ -1,5 +1,10 @@
 package exceptions;
 
+/**
+ * 
+ * @author Kaloyan Tsenov
+ *
+ */
 public class PositionException extends Exception{
 
 	/**
