@@ -24,12 +24,11 @@ public class Position {
 		}
 		this.x = x;
 		this.y = y;
-		generateStartingPosition();
 	}
 	
 	/**
 	 * Generates random starting position of the knight.
-	 * @param Returns void
+	 * This Method is for testing only.
 	 */
 	// Generates a random position of the knight at the start of the game
 	protected void generateStartingPosition() {

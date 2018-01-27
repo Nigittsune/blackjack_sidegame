@@ -2,7 +2,12 @@ package win.the.knight;
 
 import java.util.Scanner;
 
-public class KnightChessLogic {
+/**
+ * 
+ * @author Kaloyan Tsenov
+ *
+ */
+public class KnightLogic {
 	private final static String WIN_MESSAGE = "Congratulations, you have reached the final position";
 	/**
 	 * TODO
@@ -10,7 +15,7 @@ public class KnightChessLogic {
 	private Position position;
 	Scanner sc;
 	
-	public KnightChessLogic() {
+	public KnightLogic() {
 		sc = new Scanner(System.in);
 	}
 	
@@ -18,26 +23,29 @@ public class KnightChessLogic {
 	 * Starting the main functions of the game
 	 * @throws PositionException 
 	 */
-	protected void startChess(int x, int y) throws PositionException {
+	protected void startGame(int x, int y) throws PositionException {
+		//Creating a starting position of the player and draws board with the Knight position.
 		position = new Position(x, y);
 		Board.getInstance().drawBoard(position);
-		while (!moveKnight()) {
-			
-		}
+		
+		while (!moveKnight());
 	}
 
 	/**
 	 * 
-	 * Converts the user String with position to Integers x & y
-	 * {@link #position}
-	 * @param Coordinates X & Y
+	 * Converts the user String with position to Integers x and y
+	 * Checks if the new position is legal or is it a winning position
+	 * @throws NumberFormatException
+	 * @throws ArrayIndexOutOfBoundsException
 	 */
 	private boolean moveKnight() {
+		// Check if the new location of the player is 3 x 3, if it`s not the function continues.
 		if(position.isWinningPosition()) {
 			System.out.println(WIN_MESSAGE);
 			sc.close();
 			return true;
 		}
+		
 		System.out.println("Enter Knight coordinates: ");
 		try {
 			String[] userInputCoordinates = sc.nextLine().split(" ");
