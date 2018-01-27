@@ -1,6 +1,8 @@
-package win.the.knight;
+package components;
 
 import java.util.concurrent.ThreadLocalRandom;
+
+import exceptions.PositionException;
 
 public class Position {
 	private final static int WIN_POSITION = 3;
@@ -9,12 +11,12 @@ public class Position {
 	private final static String[] LEGAL_STARTING_POSITIONS = { "1 1", "1 2", "1 3", "2 1", "2 3", "3 1", "3 2" };
 	
 	/**
-	 * Chess board row
+	 * Chess board column
 	 */
 	public int x;
 	
 	/**
-	 * Chess board column
+	 * Chess board row
 	 */
 	public int y;
 	

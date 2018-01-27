@@ -1,4 +1,4 @@
-package win.the.knight;
+package knight_for_the_win;
 
 public class KnightFactory {
 	

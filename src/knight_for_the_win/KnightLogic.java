@@ -1,6 +1,10 @@
-package win.the.knight;
+package knight_for_the_win;
 
 import java.util.Scanner;
+
+import components.Board;
+import components.Position;
+import exceptions.PositionException;
 
 /**
  * 

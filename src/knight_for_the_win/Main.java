@@ -1,4 +1,6 @@
-package win.the.knight;
+package knight_for_the_win;
+
+import exceptions.PositionException;
 
 public class Main {
 
