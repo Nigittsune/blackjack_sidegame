@@ -1,4 +1,4 @@
-package exceptions;
+package knight_for_the_win.exceptions;
 
 /**
  * 

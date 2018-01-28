@@ -1,6 +1,6 @@
 package knight_for_the_win;
 
-import exceptions.PositionException;
+import knight_for_the_win.exceptions.PositionException;
 
 /**
  * 
@@ -18,8 +18,7 @@ public class Main {
 			int y = Integer.parseInt(args[1]);
 			knightGame.startGame(x, y);
 		} catch(NumberFormatException | ArrayIndexOutOfBoundsException | PositionException e) {
-			System.out.println("Illegal arguments: ");
-			e.printStackTrace();
+			System.out.println("Illegal arguments: " + e.getMessage());
 		}
 		
 	}

@@ -1,8 +1,8 @@
-package components;
+package knight_for_the_win.components;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import exceptions.PositionException;
+import knight_for_the_win.exceptions.PositionException;
 
 /**
  * 
@@ -39,11 +39,11 @@ public class Position {
 	 * This Method is for testing only.
 	 */
 	// Generates a random position of the knight at the start of the game
-	protected void generateStartingPosition() {
-		String[] coordinates = LEGAL_STARTING_POSITIONS[ThreadLocalRandom.current().nextInt(0,
-				(LEGAL_STARTING_POSITIONS.length))].split(" ");
-		this.x = Integer.parseInt(coordinates[0]);
-		this.y = Integer.parseInt(coordinates[1]);
+	public static String generateStartingPosition() {
+		String coordinates = LEGAL_STARTING_POSITIONS[ThreadLocalRandom.current().nextInt(0,
+				(LEGAL_STARTING_POSITIONS.length))];
+		
+		return coordinates;
 	}
 	
 	/**
