@@ -56,6 +56,7 @@ public class KnightLogic {
 			return true;
 		}
 		
+		System.out.println(ENTER_POSITION_MESSAGE);
 		try {
 			String[] userCoord = sc.nextLine().split(" ");
 			int x = Integer.parseInt(userCoord[0]);
