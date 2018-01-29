@@ -35,7 +35,7 @@ public class Board {
 
 	        for (int i = 0; i < board.length; i++) {
 	            for (int j = 0; j < board[i].length; j++) {
-	            	if(pos.x - 1 == i && pos.y - 1 == j) {
+	            	if(isKnightPosition(pos, i, j)) {
 	            		board[i][j] = knight;
 	            		continue ;
 	            	}
@@ -64,7 +64,7 @@ public class Board {
 	 * @return
 	 */
 	public boolean isKnightPosition(Position pos, int currX, int currY){
-		return (pos.x == currX && pos.y == currY);
+		return (pos.getX() - 1 == currX && pos.getY() - 1 == currY);
 	}
 	
 }
