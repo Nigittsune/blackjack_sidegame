@@ -1,7 +1,5 @@
 package knight_for_the_win.components;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 import knight_for_the_win.exceptions.PositionException;
 
 /**
@@ -15,7 +13,6 @@ public class Position {
 	private final static int STUCK_POSITION = 2;
 	private final static int MAX_POSITION = 3;
 	private final static int WIN_POSITION = 3;
-	private final static String[] LEGAL_STARTING_POSITIONS = { "1 1", "1 2", "1 3", "2 1", "2 3", "3 1", "3 2" };
 	
 	/**
 	 * Chess piece column
@@ -34,6 +31,7 @@ public class Position {
 	 * @throws PositionException - occurs when the params x and y are not legal
 	 */
 	public Position(int x, int y) throws PositionException {
+		// don`t give the position to be accepted if it`s not legal
 		if(!isPositionOnBoard(x, y) || !isLegalStartPosition(x, y)) {
 			throw new PositionException("You can`t start on the final "
 					+ "or stuck position: " + x + " " + y);
@@ -41,31 +39,26 @@ public class Position {
 		setPositionCoordinates(x, y);
 	}
 	
+	//setter for x - column and y - row
 	public void setPositionCoordinates(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
 	
+	// getter for x - column
 	public int getX() {
 		return this.x;
 	}
 	
+	// getter for y - row
 	public int getY() {
 		return this.y;
 	}
 	
 	/**
-	 * Generates random starting position of the knight.
-	 * This Method is for testing only.
+	 * Checks if the starting position is not already the winning
+	 * position or if it`s stuck position.
 	 */
-	// Generates a random position of the knight at the start of the game
-	public static String generatePosition() {
-		String coordinates = LEGAL_STARTING_POSITIONS[ThreadLocalRandom.current().nextInt(0,
-				(LEGAL_STARTING_POSITIONS.length))];
-		
-		return coordinates;
-	}
-	
 	private boolean isLegalStartPosition(int x, int y) {
 		if ( (x == STUCK_POSITION && y == STUCK_POSITION) 
 				|| (x == WIN_POSITION && y == WIN_POSITION)) {
@@ -82,6 +75,7 @@ public class Position {
 	 */
 	public boolean isLegalPosition(int x, int y) {
 		if(isPositionOnBoard(x, y)) {
+			//deltaX and deltaY are representation of the absolute value of the old and new coordinates
 			int deltaX = Math.abs(this.x - x);
 			int deltaY = Math.abs(this.y - y);
 			
@@ -92,14 +86,18 @@ public class Position {
 		return false;
 	}
 	
+	/**
+	 * Check if the position is within the chess board.
+	 * @return boolean value of the checked position
+	 */
 	private boolean isPositionOnBoard(int x, int y) {
 		return ((x >= MIN_POSITION && x <= MAX_POSITION) && (y >= MIN_POSITION && y <= MAX_POSITION));
 	}
 
 	/**
 	 * Checks if the coordinates of x and y are equal with the
-	 * winning coordinates of the game
-	 * @return true or false
+	 * winning coordinates of the game.
+	 * @return boolean value of the current and win position
 	 */
 	public Boolean isWinningPosition() {
 		return (this.x == WIN_POSITION && this.y == WIN_POSITION);

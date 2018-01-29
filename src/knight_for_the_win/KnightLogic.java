@@ -24,6 +24,7 @@ public class KnightLogic {
 	/**
 	 * Creating a starting position of the player 
 	 * and draws board with the position in the console.
+	 * this function can be used also for reseting the game.
 	 * @throws PositionException 
 	 */
 	public void startGame(int x, int y) throws PositionException {

@@ -35,12 +35,13 @@ public class KnightChessTest {
 	public void setUp() throws Exception {
 		factoryObject = new KnightFactory();
 		logicObject = factoryObject.constructKnight();
-		positionObject = new Position(1, 1);
 		coord = new HashMap<>();
 		coord.put("default", new Integer[] {1, 2});
+		coord.put("nextmove", new Integer[] {3, 1});
 		coord.put("win", new Integer[] {3,  3});
 		coord.put("outofboard", new Integer[] {4, 5});
-		coord.put("notlegal", new Integer[] {2, 2});
+		
+		positionObject = new Position(1, 2);
 	}
 
 	@Test
@@ -66,60 +67,39 @@ public class KnightChessTest {
 		assertNotNull(positionObject);
 	}
 	
+	/**
+	 * Invoking an PositionException which is not catched by catch clause.
+	 * @throws PositionException
+	 */
 	@Test (expected = PositionException.class)
 	public void testStartGameWithPositionOutOfBoards() throws PositionException {
 		logicObject.startGame(coord.get("outofboard")[0], coord.get("outofboard")[0]);
 	}
-
+	
 	/**
-	 * Test method for
-	 * {@link knight_for_the_win.KnightLogic#startGame(int, int)}.
-	 * 
+	 * Test if the boolean parameter return true when the game is won.
 	 * @throws PositionException
 	 */
 	@Test
-	public void testMoveKnightCatchClauseNumberFormatException() throws PositionException {
-		logicObject.startGame(coord.get("default")[0], coord.get("default")[1]);
-		
-		String [] wrongInfo = {"not", "number"};
-		logicObject.moveKnight(wrongInfo);
-		
-	}
-	
-	@Test
-	public void testMoveKnightCatchClauseArrayIndexOutOfBoundsException() throws PositionException {
-		logicObject.startGame(coord.get("default")[0], coord.get("default")[1]);
-		
-		String[] lessInfo = {"1"};
-		logicObject.moveKnight(lessInfo);
-		
-	}
-	
-	@Test
-	public void testMoveKnightWinCase() throws PositionException {
-		logicObject.startGame(coord.get("default")[0], coord.get("default")[1]);
-		logicObject.moveKnight(new String[] {"3", "3"});
-	}
-	
-	@Test
-	public void testMoveKnightWithSendingTwiceSamePosition() throws PositionException {
-		logicObject.startGame(coord.get("default")[0], coord.get("default")[1]);
-		logicObject.moveKnight(new String[] {"1", "2"});
-	}
-	
-	@Test
 	public void testIsGameFinishedParameter() throws PositionException {
+		//win scenario
 		logicObject.startGame(coord.get("default")[0], coord.get("default")[1]);
 		logicObject.moveKnight(new String[] {"3", "3"});
+		
 		assertTrue(logicObject.isGameFinished());
 	}
 
+	/**
+	 * Test the position of the chess piece in two cases:
+	 * First when the position is legal and returns true
+	 * Seconds when the position is out of board and returns false
+	 */
 	@Test
 	public void testIsLegalPosition() {
 		// test with legal position
-		assertTrue(positionObject.isLegalPosition(2, 3));
+		assertTrue(positionObject.isLegalPosition(coord.get("nextmove")[0], coord.get("nextmove")[1]));
 		// test with not legal position
-		assertFalse(positionObject.isLegalPosition(5, 7));
+		assertFalse(positionObject.isLegalPosition(coord.get("outofboard")[0], coord.get("outofboard")[1]));
 	}
 
 }
