@@ -5,7 +5,7 @@ package knight_for_the_win.exceptions;
  * @author Kaloyan Tsenov
  *
  */
-public class PositionException extends Exception{
+public class PositionException extends Exception {
 
 	/**
 	 * Auto-generated Serial Version UID for the Specific Exception
