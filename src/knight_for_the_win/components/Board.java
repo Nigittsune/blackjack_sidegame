@@ -51,17 +51,6 @@ public class Board {
 			}
 			System.out.println("   -----------");
 		}
-		// System.out.println(" ------------");
-		// System.out.println("1 | " + BOARD[0][0] + " | " + BOARD[0][1] + " | "
-		// + BOARD[0][2] + " |");
-		// System.out.println(" -----------");
-		// System.out.println("2 | " + BOARD[1][0] + " | " + BOARD[1][1] + " | "
-		// + BOARD[1][2] + " |");
-		// System.out.println(" -----------");
-		// System.out.println("3 | " + BOARD[2][0] + " | " + BOARD[2][1] + " | "
-		// + BOARD[2][2] + " |");
-		// System.out.println(" -----------");
-		// System.out.println();
 	}
 
 	/**
